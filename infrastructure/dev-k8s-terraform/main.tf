@@ -1,5 +1,5 @@
 provider "aws" {
-  region  = "us-east-1"
+  region  = "us-east-2"
 }
 
 module "iam" {
@@ -157,8 +157,8 @@ resource "aws_instance" "kube-master" {
     iam_instance_profile = module.iam.master_profile_name
     vpc_security_group_ids = [aws_security_group.petclinic-kube-master-sg.id, aws_security_group.petclinic-mutual-sg.id]
     key_name = "clarus"
-    subnet_id = "subnet-c41ba589"  # select own subnet_id of us-east-1a
-    availability_zone = "us-east-1a"
+    subnet_id = "subnet-0b66681b78a77c95e"  # select own subnet_id of us-east-1a
+    availability_zone = "us-east-2a"
     tags = {
         Name = "kube-master"
         "kubernetes.io/cluster/petclinicCluster" = "owned"
@@ -175,8 +175,8 @@ resource "aws_instance" "worker-1" {
         iam_instance_profile = module.iam.worker_profile_name
     vpc_security_group_ids = [aws_security_group.petclinic-kube-worker-sg.id, aws_security_group.petclinic-mutual-sg.id]
     key_name = "clarus"
-    subnet_id = "subnet-c41ba589"  # select own subnet_id of us-east-1a
-    availability_zone = "us-east-1a"
+    subnet_id = "subnet-0b66681b78a77c95e"  # select own subnet_id of us-east-1a
+    availability_zone = "us-east-2a"
     tags = {
         Name = "worker-1"
         "kubernetes.io/cluster/petclinicCluster" = "owned"
@@ -193,8 +193,8 @@ resource "aws_instance" "worker-2" {
     iam_instance_profile = module.iam.worker_profile_name
     vpc_security_group_ids = [aws_security_group.petclinic-kube-worker-sg.id, aws_security_group.petclinic-mutual-sg.id]
     key_name = "clarus"
-    subnet_id = "subnet-c41ba589"  # select own subnet_id of us-east-1a
-    availability_zone = "us-east-1a"
+    subnet_id = "subnet-0b66681b78a77c95e"  # select own subnet_id of us-east-1a
+    availability_zone = "us-east-2a"
     tags = {
         Name = "worker-2"
         "kubernetes.io/cluster/petclinicCluster" = "owned"
